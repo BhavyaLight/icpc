@@ -1,0 +1,51 @@
+//time limit exceeded on test case 8 :( 
+#include<stdio.h>
+
+int men[2], maxSeq[2], size, count, allocMen[2];
+
+void addMen(long consCount, int whichMen)
+{
+    if(allocMen[whichMen]==men[whichMen])
+        return;
+    if(consCount>maxSeq[whichMen])
+        return;
+    else
+    {
+        allocMen[whichMen]++;
+        if(allocMen[0]+allocMen[1]==size){
+            count++;
+        }
+        else
+        {
+            if(whichMen==1)
+            {
+                addMen(consCount+1,1);
+                addMen(1,0);
+            }
+            else
+            {
+                addMen(1,1);
+                addMen(consCount+1,0);
+            }
+        }
+        allocMen[whichMen]--;
+        return;
+    }
+
+       
+
+}
+
+int main()
+{
+    scanf("%d %d %d %d", &men[0], &men[1], &maxSeq[0], &maxSeq[1]);
+    size = men[0] + men[1];
+    count = 0;
+    allocMen[0] = 0;
+    allocMen[1] = 0;
+    addMen(1,1);
+    addMen(1,0);
+    printf("%d", count);
+}
+
+
