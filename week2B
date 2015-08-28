@@ -1,4 +1,5 @@
 //time limit exceeded on test case 8 :( 
+// c code, doesn’t work
 #include<stdio.h>
 
 int men[2], maxSeq[2], size, count, allocMen[2];
